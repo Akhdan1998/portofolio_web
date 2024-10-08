@@ -194,35 +194,57 @@ class HeaderWidget extends StatelessWidget {
 }
 
 class ViewAllButton extends StatelessWidget {
+  final String text; // Untuk teks tombol
+  final VoidCallback onPressed; // Untuk aksi ketika tombol ditekan
+  final Color backgroundColor; // Warna background tombol
+  final Color textColor; // Warna teks
+  final EdgeInsets padding; // Padding tombol
+  final IconData? icon;
+  final Color? iconColor;
+
+  // Constructor dengan nilai default
+  ViewAllButton({
+    required this.text,
+    required this.onPressed,
+    this.backgroundColor = Colors.amberAccent,
+    this.textColor = Colors.black,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+    this.icon,
+    this.iconColor,
+  });
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.amberAccent,
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          backgroundColor: backgroundColor,
+          padding: padding,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'View All Restaurants',
+              text,
               style: TextStyle(
-                color: Colors.black,
+                color: textColor,
                 fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(width: 8),
-            Icon(
-              Icons.arrow_forward_ios,
-              size: 16,
-              color: Colors.black,
-            ),
+            if (icon != null) ...[
+              SizedBox(width: 8),
+              Icon(
+                icon, // Ikon hanya muncul jika tidak null
+                size: 16,
+                color: iconColor ?? textColor, // Warna ikon default sama dengan teks jika tidak diberikan
+              ),
+            ],
           ],
         ),
       ),
@@ -300,12 +322,12 @@ class _RestaurantCardState extends State<RestaurantCard> {
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.star, color: Colors.yellow),
+                          Icon(Icons.star, color: 'FFB800'.toColor()),
                           SizedBox(width: 4),
                           Text(
                             widget.bintang,
                             style: TextStyle(
-                              color: Colors.yellow,
+                              color: 'FFB800'.toColor(),
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
@@ -435,12 +457,12 @@ class _HoverableRestaurantCardState extends State<HoverableRestaurantCard> {
                     // Rating dan reviews
                     Row(
                       children: [
-                        Icon(Icons.star, color: Colors.yellow),
+                        Icon(Icons.star, color: 'FFB800'.toColor()),
                         SizedBox(width: 4),
                         Text(
                           widget.restaurant['rating'],
                           style: TextStyle(
-                            color: Colors.yellow,
+                            color: 'FFB800'.toColor(),
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),

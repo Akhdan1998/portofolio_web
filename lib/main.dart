@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'dart:html' as html;
 import 'package:portofolio_web/models/models.dart';
 import 'package:portofolio_web/utils.dart';
@@ -64,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late Timer _timer;
   double _scrollPosition = 0.0;
   bool _scrollingRight = true;
+  double value = 3.5;
 
   @override
   void initState() {
@@ -252,15 +254,11 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                             SizedBox(width: 10),
-                            ElevatedButton(
-                              style: unyu,
+                            ViewAllButton(
+                              text: 'Log In',
+                              backgroundColor: '5A4FCF'.toColor().withOpacity(0.2),
+                              textColor: '5A4FCF'.toColor(),
                               onPressed: () {},
-                              child: Text(
-                                'Log In',
-                                style: TextStyle(
-                                    color: '5A4FCF'.toColor(),
-                                    fontWeight: FontWeight.bold),
-                              ),
                             ),
                           ],
                         ),
@@ -277,14 +275,274 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Row(
                       children: [
                         SizedBox(width: 20),
-                        Image.asset(
-                          'assets/gambar1.png',
-                          scale: 3,
+                        Stack(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  color: Colors.white,
+                                  width: 90,
+                                  height: 375,
+                                ),
+                                Image.asset(
+                                  'assets/gambar1.png',
+                                  scale: 3,
+                                ),
+                              ],
+                            ),
+                            Positioned(
+                              top: 50,
+                              child: Container(
+                                padding: EdgeInsets.all(24),
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      blurRadius: 10,
+                                      offset: Offset(0, 5),
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.circular(24),
+                                color: Colors.white,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        RatingStars(
+                                          value: value,
+                                          onValueChanged: (v) {
+                                            //
+                                            setState(() {
+                                              value = v;
+                                            });
+                                          },
+                                          starBuilder: (index, color) => Icon(
+                                            Icons.star,
+                                            color: color,
+                                          ),
+                                          starCount: 5,
+                                          starSize: 20,
+                                          valueLabelRadius: 10,
+                                          maxValue: 5,
+                                          starSpacing: 2,
+                                          maxValueVisibility: true,
+                                          valueLabelVisibility: false,
+                                          animationDuration: Duration(milliseconds: 1000),
+                                          valueLabelPadding: EdgeInsets.zero,
+                                          valueLabelMargin: EdgeInsets.zero,
+                                          starOffColor: Color(0xffe7e8ea),
+                                          starColor: 'FFB800'.toColor(),
+                                        ),
+                                        SizedBox(width: 4),
+                                        Text(
+                                          value.toStringAsFixed(1),
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: 'FFB800'.toColor(),
+                                          ),
+                                        ),
+                                        SizedBox(width: 4),
+                                        Text('(5.2K+)', style: TextStyle(
+                                          fontSize: 18,
+                                          color: '656565'.toColor(), // Warna teks sesuai kebutuhan
+                                        ),),
+                                      ],
+                                    ),
+                                    Text(
+                                      'Padang Restaurant',
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        color: '232631'.toColor(),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      'IDR 49.999 - IDR 560.000',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: '656565'.toColor(),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 18,),
+                                        SizedBox(width: 4),
+                                        Text(
+                                          'Padang, Indonesia',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: '656565'.toColor(),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 34),
+                                    ViewAllButton(
+                                      text: 'Make Reservation',
+                                      icon: Icons.arrow_forward_ios,
+                                      backgroundColor: 'FDC886'.toColor(),
+                                      textColor: '232631'.toColor(),
+                                      onPressed: () {},
+                                    ),
+                                    SizedBox(height: 12),
+                                    Row(
+                                      children: [
+                                        Image.asset('assets/info.png', scale: 2,),
+                                        SizedBox(width: 6),
+                                        Text(
+                                          'No extra cost',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: '656565'.toColor(),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),),
+                          ],
                         ),
                         SizedBox(width: 20),
-                        Image.asset(
-                          'assets/gambar2.png',
-                          scale: 3,
+                        Stack(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  color: Colors.white,
+                                  width: 90,
+                                  height: 375,
+                                ),
+                                Image.asset(
+                                  'assets/gambar2.png',
+                                  scale: 3,
+                                ),
+                              ],
+                            ),
+                            Positioned(
+                              top: 50,
+                              child: Container(
+                                padding: EdgeInsets.all(24),
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      blurRadius: 10,
+                                      offset: Offset(0, 5),
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.circular(24),
+                                  color: Colors.white,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        RatingStars(
+                                          value: value,
+                                          onValueChanged: (v) {
+                                            //
+                                            setState(() {
+                                              value = v;
+                                            });
+                                          },
+                                          starBuilder: (index, color) => Icon(
+                                            Icons.star,
+                                            color: color,
+                                          ),
+                                          starCount: 5,
+                                          starSize: 20,
+                                          valueLabelRadius: 10,
+                                          maxValue: 5,
+                                          starSpacing: 2,
+                                          maxValueVisibility: true,
+                                          valueLabelVisibility: false,
+                                          animationDuration: Duration(milliseconds: 1000),
+                                          valueLabelPadding: EdgeInsets.zero,
+                                          valueLabelMargin: EdgeInsets.zero,
+                                          starOffColor: Color(0xffe7e8ea),
+                                          starColor: 'FFB800'.toColor(),
+                                        ),
+                                        SizedBox(width: 4),
+                                        Text(
+                                          value.toStringAsFixed(1),
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: 'FFB800'.toColor(),
+                                          ),
+                                        ),
+                                        SizedBox(width: 4),
+                                        Text('(5.2K+)', style: TextStyle(
+                                          fontSize: 18,
+                                          color: '656565'.toColor(), // Warna teks sesuai kebutuhan
+                                        ),),
+                                      ],
+                                    ),
+                                    Text(
+                                      'Amuz Gourmet ',
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        color: '232631'.toColor(),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      'IDR 80.999 - IDR 560.000',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: '656565'.toColor(),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 18,),
+                                        SizedBox(width: 4),
+                                        Text(
+                                          'Gorontalo, Indonesia',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: '656565'.toColor(),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 34),
+                                    ViewAllButton(
+                                      text: 'Make Reservation',
+                                      icon: Icons.arrow_forward_ios,
+                                      backgroundColor: 'FDC886'.toColor(),
+                                      textColor: '232631'.toColor(),
+                                      onPressed: () {},
+                                    ),
+                                    SizedBox(height: 12),
+                                    Row(
+                                      children: [
+                                        Image.asset('assets/info.png', scale: 2,),
+                                        SizedBox(width: 6),
+                                        Text(
+                                          'No extra cost',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: '656565'.toColor(),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),),
+                          ],
                         ),
                         SizedBox(width: 20),
                       ],
@@ -339,7 +597,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 HeaderWidget(),
-                                ViewAllButton(),
+                                ViewAllButton(
+                                  text: 'View All Restaurant',
+                                  icon: Icons.arrow_forward_ios,
+                                  backgroundColor: 'FDC886'.toColor(),
+                                  textColor: '232631'.toColor(),
+                                  onPressed: () {
+                                    // Aksi berbeda
+                                  },
+                                ),
                               ],
                             ),
                           ),
@@ -464,7 +730,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(height: 56),
-                ViewAllButton(),
+                ViewAllButton(
+                  text: 'View All Restaurant',
+                  icon: Icons.arrow_forward_ios,
+                  backgroundColor: 'FDC886'.toColor(),
+                  textColor: '232631'.toColor(),
+                  onPressed: () {},
+                ),
                 SizedBox(height: 120),
               ],
             ),
