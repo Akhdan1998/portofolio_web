@@ -256,7 +256,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             SizedBox(width: 10),
                             ViewAllButton(
                               text: 'Log In',
-                              backgroundColor: '5A4FCF'.toColor().withOpacity(0.2),
+                              backgroundColor:
+                                  '5A4FCF'.toColor().withOpacity(0.2),
                               textColor: '5A4FCF'.toColor(),
                               onPressed: () {},
                             ),
@@ -280,7 +281,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Row(
                               children: [
                                 Container(
-                                  color: Colors.white,
+                                  color: 'FAFAFA'.toColor(),
                                   width: 90,
                                   height: 375,
                                 ),
@@ -303,13 +304,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ],
                                   borderRadius: BorderRadius.circular(24),
-                                color: Colors.white,
+                                  color: Colors.white,
                                 ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         RatingStars(
                                           value: value,
@@ -330,7 +332,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                           starSpacing: 2,
                                           maxValueVisibility: true,
                                           valueLabelVisibility: false,
-                                          animationDuration: Duration(milliseconds: 1000),
+                                          animationDuration:
+                                              Duration(milliseconds: 1000),
                                           valueLabelPadding: EdgeInsets.zero,
                                           valueLabelMargin: EdgeInsets.zero,
                                           starOffColor: Color(0xffe7e8ea),
@@ -345,10 +348,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                           ),
                                         ),
                                         SizedBox(width: 4),
-                                        Text('(5.2K+)', style: TextStyle(
-                                          fontSize: 18,
-                                          color: '656565'.toColor(), // Warna teks sesuai kebutuhan
-                                        ),),
+                                        Text(
+                                          '(5.2K+)',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: '656565'
+                                                .toColor(), // Warna teks sesuai kebutuhan
+                                          ),
+                                        ),
                                       ],
                                     ),
                                     Text(
@@ -369,7 +376,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                     Row(
                                       children: [
-                                        Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 18,),
+                                        Icon(
+                                          Icons.location_on_sharp,
+                                          color: '656565'.toColor(),
+                                          size: 18,
+                                        ),
                                         SizedBox(width: 4),
                                         Text(
                                           'Padang, Indonesia',
@@ -392,7 +403,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     SizedBox(height: 12),
                                     Row(
                                       children: [
-                                        Image.asset('assets/info.png', scale: 2,),
+                                        Image.asset(
+                                          'assets/info.png',
+                                          scale: 2,
+                                        ),
                                         SizedBox(width: 6),
                                         Text(
                                           'No extra cost',
@@ -406,7 +420,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ],
                                 ),
-                              ),),
+                              ),
+                            ),
                           ],
                         ),
                         SizedBox(width: 20),
@@ -415,7 +430,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Row(
                               children: [
                                 Container(
-                                  color: Colors.white,
+                                  color: 'FAFAFA'.toColor(),
                                   width: 90,
                                   height: 375,
                                 ),
@@ -444,7 +459,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         RatingStars(
                                           value: value,
@@ -465,7 +481,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                           starSpacing: 2,
                                           maxValueVisibility: true,
                                           valueLabelVisibility: false,
-                                          animationDuration: Duration(milliseconds: 1000),
+                                          animationDuration:
+                                              Duration(milliseconds: 1000),
                                           valueLabelPadding: EdgeInsets.zero,
                                           valueLabelMargin: EdgeInsets.zero,
                                           starOffColor: Color(0xffe7e8ea),
@@ -480,10 +497,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                           ),
                                         ),
                                         SizedBox(width: 4),
-                                        Text('(5.2K+)', style: TextStyle(
-                                          fontSize: 18,
-                                          color: '656565'.toColor(), // Warna teks sesuai kebutuhan
-                                        ),),
+                                        Text(
+                                          '(5.2K+)',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: '656565'
+                                                .toColor(), // Warna teks sesuai kebutuhan
+                                          ),
+                                        ),
                                       ],
                                     ),
                                     Text(
@@ -504,7 +525,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                     Row(
                                       children: [
-                                        Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 18,),
+                                        Icon(
+                                          Icons.location_on_sharp,
+                                          color: '656565'.toColor(),
+                                          size: 18,
+                                        ),
                                         SizedBox(width: 4),
                                         Text(
                                           'Gorontalo, Indonesia',
@@ -527,7 +552,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     SizedBox(height: 12),
                                     Row(
                                       children: [
-                                        Image.asset('assets/info.png', scale: 2,),
+                                        Image.asset(
+                                          'assets/info.png',
+                                          scale: 2,
+                                        ),
                                         SizedBox(width: 6),
                                         Text(
                                           'No extra cost',
@@ -541,7 +569,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ],
                                 ),
-                              ),),
+                              ),
+                            ),
                           ],
                         ),
                         SizedBox(width: 20),
@@ -550,11 +579,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(height: 20),
-                Text('Special Benefit For You',
-                    style: Theme.of(context).textTheme.bodyMedium),
+                Text(
+                  'Special Benefit For You',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
                 SizedBox(height: 6),
-                Text('Why Should Choose Us?',
-                    style: Theme.of(context).textTheme.bodyLarge),
+                Text(
+                  'Why Should Choose Us?',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
                 SizedBox(height: 41),
                 Row(
                   children: [
@@ -736,6 +769,312 @@ class _MyHomePageState extends State<MyHomePage> {
                   backgroundColor: 'FDC886'.toColor(),
                   textColor: '232631'.toColor(),
                   onPressed: () {},
+                ),
+                SizedBox(height: 120),
+                Row(
+                  children: [
+                    Stack(
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              width: 70,
+                              height: MediaQuery.of(context).size.height - 225,
+                            ),
+                            Image.asset(
+                              'assets/nyoman.png',
+                              scale: 2,
+                            ),
+                            Container(
+                              width: 70,
+                              height: MediaQuery.of(context).size.height - 225,
+                            ),
+                          ],
+                        ),
+                        Positioned(
+                          left: 30,
+                          bottom: 30,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                            padding: EdgeInsets.all(24),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 96,
+                                  height: 132,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage('assets/gambar2.png'),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 12),
+                                Container(
+                                  height: 120,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Chef at restaurant:',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: '232631'.toColor(),
+                                            ),
+                                          ),
+                                          Text(
+                                            'Pearl Dolphin',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: '232631'.toColor(),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'View Details',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: 'FDC886'.toColor(),
+                                            ),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: 'FDC886'.toColor(),
+                                            size: 12,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          right: 0,
+                          top: 30,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                            padding: EdgeInsets.all(24),
+                            child: Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.all(16),
+                                  padding: EdgeInsets.all(15),
+                                  height: 80,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: 'FDC886'.toColor().withOpacity(0.2),
+                                  ),
+                                  child: Image.asset('assets/experience.png',
+                                      height: 35.42, width: 41.67),
+                                ),
+                                Text(
+                                  '12 Years',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: '232631'.toColor(),
+                                  ),
+                                ),
+                                Text(
+                                  'Experience',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: '232631'.toColor(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 64),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Top 4 Expert Chefs', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                        Text('Expert Chefs in Fuddy', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32, color: '232631'.toColor(),),),
+                        SizedBox(height: 32),
+                        Container(
+                          padding: EdgeInsets.all(24),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 10,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(24),
+                            color: Colors.white,
+                          ),
+                          width: 596,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('PIZZA', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Phoenix Satcheup', style: TextStyle(fontSize: 16, color: '656565'.toColor(), fontWeight: FontWeight.bold,),),
+                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Profile Details',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: 'FDC886'.toColor(),
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: 'FDC886'.toColor(),
+                                        size: 12,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 15,),
+                                  SizedBox(width: 5),
+                                  Text('Jakarta, Indonesia', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 32),
+                        Container(
+                          padding: EdgeInsets.all(24),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 10,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(24),
+                            color: Colors.white,
+                          ),
+                          width: 596,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('VEGAN', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                              Text('Chamber Botfrag', style: TextStyle(fontSize: 16, color: '656565'.toColor(), fontWeight: FontWeight.bold,),),
+                              Row(
+                                children: [
+                                  Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 15,),
+                                  SizedBox(width: 5),
+                                  Text('Bandung, Indonesia', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 32),
+                        Container(
+                          padding: EdgeInsets.all(24),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 10,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(24),
+                            color: Colors.white,
+                          ),
+                          width: 596,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('roast chicken', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                              Text('Asep Vandal', style: TextStyle(fontSize: 16, color: '656565'.toColor(), fontWeight: FontWeight.bold,),),
+                              Row(
+                                children: [
+                                  Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 15,),
+                                  SizedBox(width: 5),
+                                  Text('Sunda, Indonesia', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 32),
+                        Container(
+                          padding: EdgeInsets.all(24),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 10,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(24),
+                            color: Colors.white,
+                          ),
+                          width: 596,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('BEEF STEAK', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                              Text('I Made Invoker ', style: TextStyle(fontSize: 16, color: '656565'.toColor(), fontWeight: FontWeight.bold,),),
+                              Row(
+                                children: [
+                                  Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 15,),
+                                  SizedBox(width: 5),
+                                  Text('Bali, Indonesia', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 SizedBox(height: 120),
               ],
