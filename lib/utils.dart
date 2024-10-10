@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supercharged/supercharged.dart';
@@ -27,3 +25,8 @@ List<Fitur> fitur = [
   Fitur(id: '4', icon: 'assets/clean.png', title: 'Guaranteed Cleanliness', subtitle: 'We ensure the cleanliness of the\nplace as well as the food',),
 ];
 
+
+
+class Wkwk {
+
+}

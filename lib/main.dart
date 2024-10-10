@@ -1,11 +1,7 @@
-// import 'package:carousel_slider/carousel_slider.dart' as carousel;
-// import 'package:carousel_slider/carousel_slider.dart';
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'dart:html' as html;
-import 'package:portofolio_web/models/models.dart';
 import 'package:portofolio_web/utils.dart';
 import 'package:supercharged/supercharged.dart';
 import 'dart:js' as js;
@@ -66,6 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
   double _scrollPosition = 0.0;
   bool _scrollingRight = true;
   double value = 3.5;
+  bool isActive1 = true;
+  bool isActive2 = false;
+  final GlobalKey _servicesKey = GlobalKey();
+  final GlobalKey _aboutKey = GlobalKey();
 
   @override
   void initState() {
@@ -118,156 +118,211 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
+  void _scrollToServices() {
+    RenderBox? renderBox = _servicesKey.currentContext?.findRenderObject() as RenderBox?;
+
+    if (renderBox != null) {
+      Offset offset = renderBox.localToGlobal(Offset.zero);
+
+      double appBarHeight = AppBar().preferredSize.height;
+      double targetScrollPosition = offset.dy - appBarHeight;
+
+      _scrollController.animateTo(
+        targetScrollPosition,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  void _scrollToAbout() {
+    RenderBox? renderBox = _aboutKey.currentContext?.findRenderObject() as RenderBox?;
+
+    if (renderBox != null) {
+      Offset offset = renderBox.localToGlobal(Offset.zero);
+
+      double appBarHeight = AppBar().preferredSize.height;
+      double targetScrollPosition = offset.dy - appBarHeight;
+
+      _scrollController.animateTo(
+        targetScrollPosition,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: 'FAFAFA'.toColor(),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      LayoutBuilder(builder: (context, constraints) {
-                        double containerWidth = constraints.maxWidth;
-                        if (containerWidth < 200) {
-                          return GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                color: '326BFF'.toColor(),
-                                borderRadius: BorderRadius.circular(5),
+      appBar: AppBar(
+        scrolledUnderElevation: 0,
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        title: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              LayoutBuilder(builder: (context, constraints) {
+                double containerWidth = constraints.maxWidth;
+                if (containerWidth < 200) {
+                  return GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: '326BFF'.toColor(),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Icon(Icons.home,
+                          color: Colors.white, size: 25),
+                    ),
+                  );
+                } else {
+                  return Flexible(
+                    flex: 2,
+                    child: Row(
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            _scrollController.animateTo(
+                              0.0,
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                            );
+                          },
+                          child: Text('Home',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium),
+                        ),
+                        SizedBox(width: 10),
+                        DropdownButton<String>(
+                          icon: Icon(
+                            Icons.arrow_drop_down,
+                            color: '5A4FCF'.toColor(),
+                          ),
+                          underline: Container(),
+                          hint: Text('Category',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium),
+                          value: _selectedValue,
+                          items: _dropdownItems.map((String item) {
+                            return DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(
+                                item,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium,
                               ),
-                              child: Icon(Icons.home,
-                                  color: Colors.white, size: 25),
-                            ),
-                          );
-                        } else {
-                          return Flexible(
-                            flex: 2,
-                            child: Row(
-                              children: [
-                                TextButton(
-                                  onPressed: () {},
-                                  child: Text('Home',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium),
-                                ),
-                                SizedBox(width: 10),
-                                DropdownButton<String>(
-                                  icon: Icon(
-                                    Icons.arrow_drop_down,
-                                    color: '5A4FCF'.toColor(),
-                                  ),
-                                  underline: Container(),
-                                  hint: Text('Category',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium),
-                                  value: _selectedValue,
-                                  items: _dropdownItems.map((String item) {
-                                    return DropdownMenuItem<String>(
-                                      value: item,
-                                      child: Text(
-                                        item,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium,
-                                      ),
-                                    );
-                                  }).toList(),
-                                  onChanged: (String? newValue) {
-                                    setState(() {
-                                      _selectedValue = newValue;
-                                    });
-                                  },
-                                ),
-                                SizedBox(width: 10),
-                                TextButton(
-                                  onPressed: () {},
-                                  child: Text('Services',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium),
-                                ),
-                                SizedBox(width: 10),
-                                TextButton(
-                                  onPressed: () {},
-                                  child: Text('About us',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium),
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-                      }),
-                      Spacer(),
-                      Flexible(
-                        flex: 1,
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () {
-                              html.window.sessionStorage['reload_flag'] =
-                                  'true';
-                              js.context.callMethod('reload', []);
-                            },
-                            child: Image.asset(
-                              'assets/logo.png',
-                              scale: 3,
-                            ),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _selectedValue = newValue;
+                            });
+                          },
+                        ),
+                        SizedBox(width: 10),
+                        TextButton(
+                          onPressed: () {
+                            _scrollToServices();
+                          },
+                          child: Text('Services',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium),
+                        ),
+                        SizedBox(width: 10),
+                        TextButton(
+                          onPressed: () {
+                            _scrollToAbout();
+                          },
+                          child: Text('About us',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              }),
+              Spacer(),
+              Flexible(
+                flex: 1,
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () {
+                      html.window.sessionStorage['reload_flag'] =
+                      'true';
+                      js.context.callMethod('reload', []);
+                    },
+                    child: Image.asset(
+                      'assets/logo.png',
+                      scale: 3,
+                    ),
+                  ),
+                ),
+              ),
+              Spacer(),
+              Flexible(
+                flex: 2,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
+                        height: 35,
+                        child: TextFormField(
+                          style: TextStyle(fontSize: 15),
+                          cursorHeight: 20,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            suffixIcon: Icon(Icons.search),
+                            hintText: 'Search...',
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide.none),
                           ),
                         ),
                       ),
-                      Spacer(),
-                      Flexible(
-                        flex: 2,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.white,
-                                ),
-                                height: 35,
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.only(left: 10),
-                                    suffixIcon: Icon(Icons.search),
-                                    hintText: 'Search...',
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide.none),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            ViewAllButton(
-                              text: 'Log In',
-                              backgroundColor:
-                                  '5A4FCF'.toColor().withOpacity(0.2),
-                              textColor: '5A4FCF'.toColor(),
-                              onPressed: () {},
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(width: 10),
+                    ViewAllButton(
+                      text: 'Log In',
+                      backgroundColor:
+                      '5A4FCF'.toColor().withOpacity(0.2),
+                      textColor: '5A4FCF'.toColor(),
+                      onPressed: () {},
+                    ),
+                  ],
                 ),
-                SizedBox(height: 60),
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          double containerWidth = constraints.maxWidth;
+          return SingleChildScrollView(
+            controller: _scrollController,
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
                   child: SingleChildScrollView(
@@ -316,7 +371,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                         RatingStars(
                                           value: value,
                                           onValueChanged: (v) {
-                                            //
                                             setState(() {
                                               value = v;
                                             });
@@ -465,7 +519,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                         RatingStars(
                                           value: value,
                                           onValueChanged: (v) {
-                                            //
                                             setState(() {
                                               value = v;
                                             });
@@ -579,36 +632,41 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(height: 20),
-                Text(
-                  'Special Benefit For You',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-                SizedBox(height: 6),
-                Text(
-                  'Why Should Choose Us?',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                SizedBox(height: 41),
-                Row(
+                Column(
+                  key: _servicesKey,
                   children: [
-                    SizedBox(width: 20),
-                    Container(
-                      width: MediaQuery.of(context).size.width - 40,
-                      child: Wrap(
-                        spacing: 20,
-                        runSpacing: 20,
-                        alignment: WrapAlignment.spaceBetween,
-                        children: fitur.map((e) {
-                          return ButtonFitur(
-                            id: e.id,
-                            icon: e.icon,
-                            title: e.title,
-                            subtitle: e.subtitle,
-                          );
-                        }).toList(),
-                      ),
+                    Text(
+                      'Special Benefit For You',
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
-                    SizedBox(width: 20),
+                    SizedBox(height: 6),
+                    Text(
+                      'Why Should Choose Us?',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    SizedBox(height: 41),
+                    Row(
+                      children: [
+                        SizedBox(width: 20),
+                        Container(
+                          width: MediaQuery.of(context).size.width - 40,
+                          child: Wrap(
+                            spacing: 20,
+                            runSpacing: 20,
+                            alignment: WrapAlignment.spaceBetween,
+                            children: fitur.map((e) {
+                              return ButtonFitur(
+                                id: e.id,
+                                icon: e.icon,
+                                title: e.title,
+                                subtitle: e.subtitle,
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                        SizedBox(width: 20),
+                      ],
+                    ),
                   ],
                 ),
                 SizedBox(height: 120),
@@ -772,6 +830,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 SizedBox(height: 120),
                 Row(
+                  key: _aboutKey,
                   children: [
                     Stack(
                       children: [
@@ -849,22 +908,31 @@ class _MyHomePageState extends State<MyHomePage> {
                                           ),
                                         ],
                                       ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'View Details',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              color: 'FDC886'.toColor(),
+                                      MouseRegion(
+                                        cursor: SystemMouseCursors.click,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Container(
+                                            color: Colors.transparent,
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  'View Details',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: 'FDC886'.toColor(),
+                                                  ),
+                                                ),
+                                                SizedBox(width: 5),
+                                                Icon(
+                                                  Icons.arrow_forward_ios,
+                                                  color: 'FDC886'.toColor(),
+                                                  size: 12,
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                          SizedBox(width: 5),
-                                          Icon(
-                                            Icons.arrow_forward_ios,
-                                            color: 'FDC886'.toColor(),
-                                            size: 12,
-                                          ),
-                                        ],
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -928,8 +996,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Top 4 Expert Chefs', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
-                        Text('Expert Chefs in Fuddy', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32, color: '232631'.toColor(),),),
+                        Text(
+                          'Top 4 Expert Chefs',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        Text(
+                          'Expert Chefs in Fuddy',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 32,
+                            color: '232631'.toColor(),
+                          ),
+                        ),
                         SizedBox(height: 32),
                         Container(
                           padding: EdgeInsets.all(24),
@@ -944,39 +1023,139 @@ class _MyHomePageState extends State<MyHomePage> {
                             borderRadius: BorderRadius.circular(24),
                             color: Colors.white,
                           ),
-                          width: 596,
+                          width: MediaQuery.of(context).size.width - 850,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('PIZZA', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                              Text(
+                                'PIZZA',
+                                style: TextStyle(
+                                    fontSize: 16, color: '656565'.toColor()),
+                              ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('Phoenix Satcheup', style: TextStyle(fontSize: 16, color: '656565'.toColor(), fontWeight: FontWeight.bold,),),
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Profile Details',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: 'FDC886'.toColor(),
+                                  Text(
+                                    'Phoenix Satcheup',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: '656565'.toColor(),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  LayoutBuilder(
+                                      builder: (context, constraints) {
+                                    if (containerWidth < 200) {
+                                      return MouseRegion(
+                                        cursor: SystemMouseCursors.click,
+                                        child: IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: 'FDC886'.toColor(),
+                                            size: 12,
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(width: 5),
-                                      Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: 'FDC886'.toColor(),
-                                        size: 12,
-                                      ),
-                                    ],
+                                      );
+                                    } else {
+                                      return MouseRegion(
+                                        cursor: SystemMouseCursors.click,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Container(
+                                            color: Colors.transparent,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Profile Details',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: 'FDC886'.toColor(),
+                                                  ),
+                                                ),
+                                                SizedBox(width: 5),
+                                                Icon(
+                                                  Icons.arrow_forward_ios,
+                                                  color: 'FDC886'.toColor(),
+                                                  size: 12,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                  }),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.location_on_sharp,
+                                    color: '656565'.toColor(),
+                                    size: 15,
+                                  ),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    'Jakarta, Indonesia',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: '656565'.toColor()),
                                   ),
                                 ],
                               ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 32),
+                        Container(
+                          padding: EdgeInsets.all(24),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 10,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(24),
+                            color: Colors.white,
+                          ),
+                          width: MediaQuery.of(context).size.width - 850,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'VEGAN',
+                                style: TextStyle(
+                                    fontSize: 16, color: '656565'.toColor()),
+                              ),
+                              Text(
+                                'Chamber Botfrag',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: '656565'.toColor(),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                               Row(
                                 children: [
-                                  Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 15,),
+                                  Icon(
+                                    Icons.location_on_sharp,
+                                    color: '656565'.toColor(),
+                                    size: 15,
+                                  ),
                                   SizedBox(width: 5),
-                                  Text('Jakarta, Indonesia', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                                  Text(
+                                    'Bandung, Indonesia',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: '656565'.toColor()),
+                                  ),
                                 ],
                               ),
                             ],
@@ -996,17 +1175,37 @@ class _MyHomePageState extends State<MyHomePage> {
                             borderRadius: BorderRadius.circular(24),
                             color: Colors.white,
                           ),
-                          width: 596,
+                          width: MediaQuery.of(context).size.width - 850,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('VEGAN', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
-                              Text('Chamber Botfrag', style: TextStyle(fontSize: 16, color: '656565'.toColor(), fontWeight: FontWeight.bold,),),
+                              Text(
+                                'ROAST CHICKEN',
+                                style: TextStyle(
+                                    fontSize: 16, color: '656565'.toColor()),
+                              ),
+                              Text(
+                                'Asep Vandal',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: '656565'.toColor(),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                               Row(
                                 children: [
-                                  Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 15,),
+                                  Icon(
+                                    Icons.location_on_sharp,
+                                    color: '656565'.toColor(),
+                                    size: 15,
+                                  ),
                                   SizedBox(width: 5),
-                                  Text('Bandung, Indonesia', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                                  Text(
+                                    'Sunda, Indonesia',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: '656565'.toColor()),
+                                  ),
                                 ],
                               ),
                             ],
@@ -1026,51 +1225,49 @@ class _MyHomePageState extends State<MyHomePage> {
                             borderRadius: BorderRadius.circular(24),
                             color: Colors.white,
                           ),
-                          width: 596,
+                          width: MediaQuery.of(context).size.width - 850,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('roast chicken', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
-                              Text('Asep Vandal', style: TextStyle(fontSize: 16, color: '656565'.toColor(), fontWeight: FontWeight.bold,),),
+                              Text(
+                                'BEEF STEAK',
+                                style: TextStyle(
+                                    fontSize: 16, color: '656565'.toColor()),
+                              ),
+                              Text(
+                                'I Made Invoker ',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: '656565'.toColor(),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                               Row(
                                 children: [
-                                  Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 15,),
+                                  Icon(
+                                    Icons.location_on_sharp,
+                                    color: '656565'.toColor(),
+                                    size: 15,
+                                  ),
                                   SizedBox(width: 5),
-                                  Text('Sunda, Indonesia', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
+                                  Text(
+                                    'Bali, Indonesia',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: '656565'.toColor()),
+                                  ),
                                 ],
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(height: 32),
-                        Container(
-                          padding: EdgeInsets.all(24),
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black12,
-                                blurRadius: 10,
-                                offset: Offset(0, 5),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(24),
-                            color: Colors.white,
-                          ),
-                          width: 596,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('BEEF STEAK', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
-                              Text('I Made Invoker ', style: TextStyle(fontSize: 16, color: '656565'.toColor(), fontWeight: FontWeight.bold,),),
-                              Row(
-                                children: [
-                                  Icon(Icons.location_on_sharp, color: '656565'.toColor(), size: 15,),
-                                  SizedBox(width: 5),
-                                  Text('Bali, Indonesia', style: TextStyle(fontSize: 16, color: '656565'.toColor()),),
-                                ],
-                              ),
-                            ],
-                          ),
+                        SizedBox(height: 62),
+                        ViewAllButton(
+                          text: 'View All Chef',
+                          icon: Icons.arrow_forward_ios,
+                          backgroundColor: 'FDC886'.toColor(),
+                          textColor: '232631'.toColor(),
+                          onPressed: () {},
                         ),
                       ],
                     ),
@@ -1082,6 +1279,152 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
       ),
+    );
+  }
+  Widget buildRestaurantCard(String imagePath, String title, String priceRange, String location) {
+    return Stack(
+      children: [
+        Row(
+          children: [
+            Container(
+              color: 'FAFAFA'.toColor(),
+              width: 90,
+              height: 375,
+            ),
+            Image.asset(
+              imagePath,
+              scale: 3,
+            ),
+          ],
+        ),
+        Positioned(
+          top: 50,
+          child: Container(
+            padding: EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 10,
+                  offset: Offset(0, 5),
+                ),
+              ],
+              borderRadius: BorderRadius.circular(24),
+              color: Colors.white,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RatingStars(
+                      value: value,
+                      onValueChanged: (v) {
+                        setState(() {
+                          value = v;
+                        });
+                      },
+                      starBuilder: (index, color) => Icon(
+                        Icons.star,
+                        color: color,
+                      ),
+                      starCount: 5,
+                      starSize: 20,
+                      valueLabelRadius: 10,
+                      maxValue: 5,
+                      starSpacing: 2,
+                      maxValueVisibility: true,
+                      valueLabelVisibility: false,
+                      animationDuration: Duration(milliseconds: 1000),
+                      valueLabelPadding: EdgeInsets.zero,
+                      valueLabelMargin: EdgeInsets.zero,
+                      starOffColor: Color(0xffe7e8ea),
+                      starColor: 'FFB800'.toColor(),
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      value.toStringAsFixed(1),
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: 'FFB800'.toColor(),
+                      ),
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      '(5.2K+)',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: '656565'.toColor(),
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: '232631'.toColor(),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  priceRange,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: '656565'.toColor(),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.location_on_sharp,
+                      color: '656565'.toColor(),
+                      size: 18,
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      location,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: '656565'.toColor(),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 34),
+                ViewAllButton(
+                  text: 'Make Reservation',
+                  icon: Icons.arrow_forward_ios,
+                  backgroundColor: 'FDC886'.toColor(),
+                  textColor: '232631'.toColor(),
+                  onPressed: () {},
+                ),
+                SizedBox(height: 12),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/info.png',
+                      scale: 2,
+                    ),
+                    SizedBox(width: 6),
+                    Text(
+                      'No extra cost',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: '656565'.toColor(),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
