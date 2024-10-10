@@ -5,6 +5,7 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:supercharged/supercharged.dart';
 
+//Service Kategori
 class ButtonFitur extends StatefulWidget {
   final String id;
   final String icon;
@@ -133,6 +134,7 @@ class _ButtonFiturState extends State<ButtonFitur> {
   }
 }
 
+//Toast
 void showToast(
     BuildContext context, String message, IconData icon, Color iconColor) {
   DelightToastBar(
@@ -196,6 +198,7 @@ class HeaderWidget extends StatelessWidget {
   }
 }
 
+//button
 class ViewAllButton extends StatelessWidget {
   final String text; // Untuk teks tombol
   final VoidCallback onPressed; // Untuk aksi ketika tombol ditekan
@@ -256,6 +259,7 @@ class ViewAllButton extends StatelessWidget {
   }
 }
 
+//Restorant Card
 class RestaurantCard extends StatefulWidget {
   final String imagePath;
   final String restaurantName;
@@ -391,6 +395,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
   }
 }
 
+//Data Restoran
 final List<Map<String, dynamic>> restaurants = [
   {
     'image': 'assets/based1.png',

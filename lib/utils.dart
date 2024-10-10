@@ -4,6 +4,7 @@ import 'package:supercharged/supercharged.dart';
 
 import 'models/models.dart';
 
+//Style Eleveted
 final ButtonStyle unyu = ElevatedButton.styleFrom(
   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
   elevation: 0,
@@ -18,6 +19,7 @@ final ButtonStyle oyen = ElevatedButton.styleFrom(
   backgroundColor: 'FDC886'.toColor(),
 );
 
+//Data Services
 List<Fitur> fitur = [
   Fitur(
     id: '1',
