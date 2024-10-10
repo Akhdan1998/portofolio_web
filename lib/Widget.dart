@@ -3,8 +3,6 @@ import 'package:delightful_toast/toast/components/toast_card.dart';
 import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_stars/flutter_rating_stars.dart';
-import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 import 'package:supercharged/supercharged.dart';
 
 class ButtonFitur extends StatefulWidget {
@@ -26,6 +24,7 @@ class ButtonFitur extends StatefulWidget {
 
 class _ButtonFiturState extends State<ButtonFitur> {
   Color _buttonColor = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -96,7 +95,8 @@ class _ButtonFiturState extends State<ButtonFitur> {
               duration: Duration(milliseconds: 100),
               onPressed: () {},
               child: Container(
-                padding: EdgeInsets.only(bottom: 24, top: 24, left: 65, right: 65),
+                padding:
+                    EdgeInsets.only(bottom: 24, top: 24, left: 65, right: 65),
                 decoration: BoxDecoration(
                   color: _buttonColor,
                   borderRadius: BorderRadius.only(
@@ -133,7 +133,8 @@ class _ButtonFiturState extends State<ButtonFitur> {
   }
 }
 
-void showToast(BuildContext context, String message, IconData icon, Color iconColor) {
+void showToast(
+    BuildContext context, String message, IconData icon, Color iconColor) {
   DelightToastBar(
     animationDuration: Duration(seconds: 2),
     snackbarDuration: Duration(seconds: 5),
@@ -244,7 +245,8 @@ class ViewAllButton extends StatelessWidget {
               Icon(
                 icon, // Ikon hanya muncul jika tidak null
                 size: 16,
-                color: iconColor ?? textColor, // Warna ikon default sama dengan teks jika tidak diberikan
+                color: iconColor ??
+                    textColor, // Warna ikon default sama dengan teks jika tidak diberikan
               ),
             ],
           ],
@@ -366,7 +368,8 @@ class _RestaurantCardState extends State<RestaurantCard> {
                       SizedBox(height: 8),
                       Row(
                         children: [
-                          Icon(Icons.location_on_sharp, color: Color(0xFF656565)),
+                          Icon(Icons.location_on_sharp,
+                              color: Color(0xFF656565)),
                           SizedBox(width: 4),
                           Text(
                             widget.kota,
@@ -419,7 +422,8 @@ class HoverableRestaurantCard extends StatefulWidget {
   HoverableRestaurantCard(this.restaurant);
 
   @override
-  _HoverableRestaurantCardState createState() => _HoverableRestaurantCardState();
+  _HoverableRestaurantCardState createState() =>
+      _HoverableRestaurantCardState();
 }
 
 class _HoverableRestaurantCardState extends State<HoverableRestaurantCard> {
@@ -524,69 +528,4 @@ class _HoverableRestaurantCardState extends State<HoverableRestaurantCard> {
       ),
     );
   }
-}
-
-//Experience chef
-Widget _buildChefCard(String dish, String name, String location) {
-  return Container(
-    padding: EdgeInsets.all(24),
-    decoration: BoxDecoration(
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black12,
-          blurRadius: 10,
-          offset: Offset(0, 5),
-        ),
-      ],
-      borderRadius: BorderRadius.circular(24),
-      color: Colors.white,
-    ),
-    width: double.infinity,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(dish, style: TextStyle(fontSize: 16, color: '656565'.toColor())),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(name,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: '656565'.toColor(),
-                  fontWeight: FontWeight.bold,
-                )),
-            Row(
-              children: [
-                Text(
-                  'Profile Details',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: 'FDC886'.toColor(),
-                  ),
-                ),
-                SizedBox(width: 5),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  color: 'FDC886'.toColor(),
-                  size: 12,
-                ),
-              ],
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            Icon(
-              Icons.location_on_sharp,
-              color: '656565'.toColor(),
-              size: 15,
-            ),
-            SizedBox(width: 5),
-            Text(location,
-                style: TextStyle(fontSize: 16, color: '656565'.toColor())),
-          ],
-        ),
-      ],
-    ),
-  );
 }

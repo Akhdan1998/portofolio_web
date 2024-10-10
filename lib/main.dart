@@ -119,7 +119,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _scrollToServices() {
-    RenderBox? renderBox = _servicesKey.currentContext?.findRenderObject() as RenderBox?;
+    RenderBox? renderBox =
+        _servicesKey.currentContext?.findRenderObject() as RenderBox?;
 
     if (renderBox != null) {
       Offset offset = renderBox.localToGlobal(Offset.zero);
@@ -136,7 +137,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _scrollToAbout() {
-    RenderBox? renderBox = _aboutKey.currentContext?.findRenderObject() as RenderBox?;
+    RenderBox? renderBox =
+        _aboutKey.currentContext?.findRenderObject() as RenderBox?;
 
     if (renderBox != null) {
       Offset offset = renderBox.localToGlobal(Offset.zero);
@@ -181,8 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: '326BFF'.toColor(),
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: Icon(Icons.home,
-                          color: Colors.white, size: 25),
+                      child: Icon(Icons.home, color: Colors.white, size: 25),
                     ),
                   );
                 } else {
@@ -199,9 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             );
                           },
                           child: Text('Home',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium),
+                              style: Theme.of(context).textTheme.bodyMedium),
                         ),
                         SizedBox(width: 10),
                         DropdownButton<String>(
@@ -211,18 +210,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           underline: Container(),
                           hint: Text('Category',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium),
+                              style: Theme.of(context).textTheme.bodyMedium),
                           value: _selectedValue,
                           items: _dropdownItems.map((String item) {
                             return DropdownMenuItem<String>(
                               value: item,
                               child: Text(
                                 item,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium,
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             );
                           }).toList(),
@@ -238,9 +233,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             _scrollToServices();
                           },
                           child: Text('Services',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium),
+                              style: Theme.of(context).textTheme.bodyMedium),
                         ),
                         SizedBox(width: 10),
                         TextButton(
@@ -248,9 +241,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             _scrollToAbout();
                           },
                           child: Text('About us',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium),
+                              style: Theme.of(context).textTheme.bodyMedium),
                         ),
                       ],
                     ),
@@ -264,8 +255,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () {
-                      html.window.sessionStorage['reload_flag'] =
-                      'true';
+                      html.window.sessionStorage['reload_flag'] = 'true';
                       js.context.callMethod('reload', []);
                     },
                     child: Image.asset(
@@ -294,8 +284,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             contentPadding: EdgeInsets.only(left: 10),
                             suffixIcon: Icon(Icons.search),
                             hintText: 'Search...',
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
                           ),
                         ),
                       ),
@@ -303,8 +293,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(width: 10),
                     ViewAllButton(
                       text: 'Log In',
-                      backgroundColor:
-                      '5A4FCF'.toColor().withOpacity(0.2),
+                      backgroundColor: '5A4FCF'.toColor().withOpacity(0.2),
                       textColor: '5A4FCF'.toColor(),
                       onPressed: () {},
                     ),
@@ -1281,7 +1270,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-  Widget buildRestaurantCard(String imagePath, String title, String priceRange, String location) {
+
+  Widget buildRestaurantCard(
+      String imagePath, String title, String priceRange, String location) {
     return Stack(
       children: [
         Row(

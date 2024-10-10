@@ -19,14 +19,28 @@ final ButtonStyle oyen = ElevatedButton.styleFrom(
 );
 
 List<Fitur> fitur = [
-  Fitur(id: '1', icon: 'assets/diskon.png', title: 'Extra Discounts', subtitle: 'Get your special discount by\nusing our reservation',),
-  Fitur(id: '2', icon: 'assets/eat.png', title: 'Come and Eat', subtitle: 'Get your own table quickly &\nwithout waiting in line',),
-  Fitur(id: '3', icon: 'assets/fee.png', title: 'No Extra Fee', subtitle: 'Get tax free if you want to order\nfood and make a reservation',),
-  Fitur(id: '4', icon: 'assets/clean.png', title: 'Guaranteed Cleanliness', subtitle: 'We ensure the cleanliness of the\nplace as well as the food',),
+  Fitur(
+    id: '1',
+    icon: 'assets/diskon.png',
+    title: 'Extra Discounts',
+    subtitle: 'Get your special discount by\nusing our reservation',
+  ),
+  Fitur(
+    id: '2',
+    icon: 'assets/eat.png',
+    title: 'Come and Eat',
+    subtitle: 'Get your own table quickly &\nwithout waiting in line',
+  ),
+  Fitur(
+    id: '3',
+    icon: 'assets/fee.png',
+    title: 'No Extra Fee',
+    subtitle: 'Get tax free if you want to order\nfood and make a reservation',
+  ),
+  Fitur(
+    id: '4',
+    icon: 'assets/clean.png',
+    title: 'Guaranteed Cleanliness',
+    subtitle: 'We ensure the cleanliness of the\nplace as well as the food',
+  ),
 ];
-
-
-
-class Wkwk {
-
-}
