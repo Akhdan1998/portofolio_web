@@ -21,18 +21,10 @@ class MyApp extends StatelessWidget {
       title: 'Pendekar Gendut Resto',
       theme: ThemeData(
         primaryColor: '232631'.toColor(),
-        hintColor: '656565'.toColor(),
+        hintColor: Constans.acuacu,
         scaffoldBackgroundColor: 'FDC886'.toColor(),
         colorScheme: ColorScheme.fromSeed(seedColor: 'FDC886'.toColor()),
         useMaterial3: true,
-        textTheme: TextTheme(
-          bodySmall: TextStyle(fontSize: 16, color: '232631'.toColor()),
-          bodyMedium: TextStyle(fontSize: 16, color: '5A4FCF'.toColor()),
-          bodyLarge: TextStyle(
-              fontSize: 28,
-              color: '232631'.toColor(),
-              fontWeight: FontWeight.bold),
-        ),
       ),
       home: MyHomePage(),
     );
@@ -157,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: 'FAFAFA'.toColor(),
+      backgroundColor: Constans.utih,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         elevation: 0,
@@ -180,10 +172,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: '326BFF'.toColor(),
+                        color: Colors.transparent,
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: Icon(Icons.home, color: Colors.white, size: 25),
+                      child: Icon(Icons.home, color: Constans.utih, size: 25,),
                     ),
                   );
                 } else {
@@ -199,25 +191,29 @@ class _MyHomePageState extends State<MyHomePage> {
                               curve: Curves.easeInOut,
                             );
                           },
-                          child: Text('Home',
-                              style: Theme.of(context).textTheme.bodyMedium),
+                          child: Text(
+                            'Home',
+                            style: TextStyle(color: Constans.unyu),
+                          ),
                         ),
                         SizedBox(width: 10),
                         DropdownButton<String>(
                           icon: Icon(
                             Icons.arrow_drop_down,
-                            color: '5A4FCF'.toColor(),
+                            color: Constans.unyu,
                           ),
                           underline: Container(),
-                          hint: Text('Category',
-                              style: Theme.of(context).textTheme.bodyMedium),
+                          hint: Text(
+                            'Category',
+                            style: TextStyle(color: Constans.unyu),
+                          ),
                           value: _selectedValue,
                           items: _dropdownItems.map((String item) {
                             return DropdownMenuItem<String>(
                               value: item,
                               child: Text(
                                 item,
-                                style: Theme.of(context).textTheme.bodyMedium,
+                                style: TextStyle(color: Constans.unyu),
                               ),
                             );
                           }).toList(),
@@ -232,16 +228,20 @@ class _MyHomePageState extends State<MyHomePage> {
                           onPressed: () {
                             _scrollToServices();
                           },
-                          child: Text('Services',
-                              style: Theme.of(context).textTheme.bodyMedium),
+                          child: Text(
+                            'Services',
+                            style: TextStyle(color: Constans.unyu),
+                          ),
                         ),
                         SizedBox(width: 10),
                         TextButton(
                           onPressed: () {
                             _scrollToAbout();
                           },
-                          child: Text('About us',
-                              style: Theme.of(context).textTheme.bodyMedium),
+                          child: Text(
+                            'About us',
+                            style: TextStyle(color: Constans.unyu),
+                          ),
                         ),
                       ],
                     ),
@@ -274,7 +274,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
+                          color: Constans.utih,
                         ),
                         height: 35,
                         child: TextFormField(
@@ -325,7 +325,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Row(
                               children: [
                                 Container(
-                                  color: 'FAFAFA'.toColor(),
+                                  color: Constans.utih,
                                   width: 90,
                                   height: 375,
                                 ),
@@ -348,7 +348,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ],
                                   borderRadius: BorderRadius.circular(24),
-                                  color: Colors.white,
+                                  color: Constans.utih,
                                 ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -379,15 +379,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                               Duration(milliseconds: 1000),
                                           valueLabelPadding: EdgeInsets.zero,
                                           valueLabelMargin: EdgeInsets.zero,
-                                          starOffColor: Color(0xffe7e8ea),
-                                          starColor: 'FFB800'.toColor(),
+                                          starOffColor: Constans.acuacu.withOpacity(0.2),
+                                          starColor: Constans.oyen,
                                         ),
                                         SizedBox(width: 4),
                                         Text(
                                           value.toStringAsFixed(1),
                                           style: TextStyle(
                                             fontSize: 18,
-                                            color: 'FFB800'.toColor(),
+                                            color: Constans.oyen,
                                           ),
                                         ),
                                         SizedBox(width: 4),
@@ -395,8 +395,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           '(5.2K+)',
                                           style: TextStyle(
                                             fontSize: 18,
-                                            color: '656565'
-                                                .toColor(), // Warna teks sesuai kebutuhan
+                                            color: Constans.acuacu,
                                           ),
                                         ),
                                       ],
@@ -405,7 +404,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'Padang Restaurant',
                                       style: TextStyle(
                                         fontSize: 22,
-                                        color: '232631'.toColor(),
+                                        color: Constans.icem,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -413,7 +412,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'IDR 49.999 - IDR 560.000',
                                       style: TextStyle(
                                         fontSize: 18,
-                                        color: '656565'.toColor(),
+                                        color: Constans.acuacu,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -421,7 +420,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: [
                                         Icon(
                                           Icons.location_on_sharp,
-                                          color: '656565'.toColor(),
+                                          color: Constans.acuacu,
                                           size: 18,
                                         ),
                                         SizedBox(width: 4),
@@ -429,7 +428,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           'Padang, Indonesia',
                                           style: TextStyle(
                                             fontSize: 16,
-                                            color: '656565'.toColor(),
+                                            color: Constans.acuacu,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -439,8 +438,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ViewAllButton(
                                       text: 'Make Reservation',
                                       icon: Icons.arrow_forward_ios,
-                                      backgroundColor: 'FDC886'.toColor(),
-                                      textColor: '232631'.toColor(),
+                                      backgroundColor: Constans.oyen,
+                                      textColor: Constans.icem,
                                       onPressed: () {},
                                     ),
                                     SizedBox(height: 12),
@@ -448,14 +447,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: [
                                         Image.asset(
                                           'assets/info.png',
-                                          scale: 2,
+                                          scale: 3,
                                         ),
                                         SizedBox(width: 6),
                                         Text(
                                           'No extra cost',
                                           style: TextStyle(
                                             fontSize: 16,
-                                            color: '656565'.toColor(),
+                                            color: Constans.acuacu,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -473,7 +472,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Row(
                               children: [
                                 Container(
-                                  color: 'FAFAFA'.toColor(),
+                                  color: Constans.utih,
                                   width: 90,
                                   height: 375,
                                 ),
@@ -496,7 +495,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ],
                                   borderRadius: BorderRadius.circular(24),
-                                  color: Colors.white,
+                                  color: Constans.utih,
                                 ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -527,15 +526,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                               Duration(milliseconds: 1000),
                                           valueLabelPadding: EdgeInsets.zero,
                                           valueLabelMargin: EdgeInsets.zero,
-                                          starOffColor: Color(0xffe7e8ea),
-                                          starColor: 'FFB800'.toColor(),
+                                          starOffColor: Constans.acuacu.withOpacity(0.2),
+                                          starColor: Constans.oyen,
                                         ),
                                         SizedBox(width: 4),
                                         Text(
                                           value.toStringAsFixed(1),
                                           style: TextStyle(
                                             fontSize: 18,
-                                            color: 'FFB800'.toColor(),
+                                            color: Constans.oyen,
                                           ),
                                         ),
                                         SizedBox(width: 4),
@@ -543,8 +542,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           '(5.2K+)',
                                           style: TextStyle(
                                             fontSize: 18,
-                                            color: '656565'
-                                                .toColor(), // Warna teks sesuai kebutuhan
+                                            color: Constans.acuacu
                                           ),
                                         ),
                                       ],
@@ -553,7 +551,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'Amuz Gourmet ',
                                       style: TextStyle(
                                         fontSize: 22,
-                                        color: '232631'.toColor(),
+                                        color: Constans.icem,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -561,7 +559,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'IDR 80.999 - IDR 560.000',
                                       style: TextStyle(
                                         fontSize: 18,
-                                        color: '656565'.toColor(),
+                                        color: Constans.acuacu,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -569,7 +567,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: [
                                         Icon(
                                           Icons.location_on_sharp,
-                                          color: '656565'.toColor(),
+                                          color: Constans.acuacu,
                                           size: 18,
                                         ),
                                         SizedBox(width: 4),
@@ -577,7 +575,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           'Gorontalo, Indonesia',
                                           style: TextStyle(
                                             fontSize: 16,
-                                            color: '656565'.toColor(),
+                                            color: Constans.acuacu,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -587,8 +585,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ViewAllButton(
                                       text: 'Make Reservation',
                                       icon: Icons.arrow_forward_ios,
-                                      backgroundColor: 'FDC886'.toColor(),
-                                      textColor: '232631'.toColor(),
+                                      backgroundColor: Constans.oyen,
+                                      textColor: Constans.icem,
                                       onPressed: () {},
                                     ),
                                     SizedBox(height: 12),
@@ -596,14 +594,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: [
                                         Image.asset(
                                           'assets/info.png',
-                                          scale: 2,
+                                          scale: 3,
                                         ),
                                         SizedBox(width: 6),
                                         Text(
                                           'No extra cost',
                                           style: TextStyle(
                                             fontSize: 16,
-                                            color: '656565'.toColor(),
+                                            color: Constans.acuacu,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -626,12 +624,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Text(
                       'Special Benefit For You',
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      style: TextStyle(color: Constans.unyu, fontSize: 16, fontWeight: FontWeight.bold,),
                     ),
                     SizedBox(height: 6),
                     Text(
                       'Why Should Choose Us?',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: TextStyle(color: Constans.icem, fontSize: 28, fontWeight: FontWeight.bold,),
                     ),
                     SizedBox(height: 41),
                     Row(
@@ -666,7 +664,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: LayoutBuilder(
                     builder: (context, constraints) {
                       double cardWidth = constraints.maxWidth / 5 - 40;
-
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -737,36 +734,40 @@ class _MyHomePageState extends State<MyHomePage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Restaurant Based By City',
-                              style: Theme.of(context).textTheme.bodyMedium),
+                          Text(
+                            'Restaurant Based By City',
+                            style: TextStyle(color: Constans.unyu, fontSize: 16, fontWeight: FontWeight.bold,),
+                          ),
                           SizedBox(height: 6),
-                          Text('Restaurant Near You',
-                              style: Theme.of(context).textTheme.bodyLarge),
+                          Text(
+                            'Restaurant Near You',
+                            style: TextStyle(color: Constans.icem, fontSize: 28, fontWeight: FontWeight.bold,),
+                          ),
                         ],
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 24, right: 24),
                         decoration: BoxDecoration(
-                          color: 'F2F2F2'.toColor(),
+                          color: Constans.acuacu.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
                           children: [
                             Icon(
                               Icons.location_on_sharp,
-                              color: '656565'.toColor(),
+                              color: Constans.acuacu,
                             ),
                             SizedBox(width: 6),
                             DropdownButton<String>(
                               icon: Icon(
                                 Icons.arrow_drop_down,
-                                color: '656565'.toColor(),
+                                color: Constans.acuacu,
                               ),
                               underline: Container(),
                               hint: Text(
                                 'Location',
                                 style: TextStyle(
-                                  color: '656565'.toColor(),
+                                  color: Constans.acuacu,
                                 ),
                               ),
                               value: _selectValue,
@@ -776,7 +777,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Text(
                                     item,
                                     style: TextStyle(
-                                      color: '656565'.toColor(),
+                                      color: Constans.acuacu,
                                     ),
                                   ),
                                 );
@@ -813,7 +814,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ViewAllButton(
                   text: 'View All Restaurant',
                   icon: Icons.arrow_forward_ios,
-                  backgroundColor: 'FDC886'.toColor(),
+                  backgroundColor: Constans.oyen,
                   textColor: '232631'.toColor(),
                   onPressed: () {},
                 ),
@@ -851,7 +852,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   offset: Offset(0, 5),
                                 ),
                               ],
-                              color: Colors.white,
+                              color: Constans.utih,
                               borderRadius: BorderRadius.circular(24),
                             ),
                             padding: EdgeInsets.all(24),
@@ -884,7 +885,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             'Chef at restaurant:',
                                             style: TextStyle(
                                               fontSize: 16,
-                                              color: '232631'.toColor(),
+                                              color: Constans.icem,
                                             ),
                                           ),
                                           Text(
@@ -892,7 +893,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
-                                              color: '232631'.toColor(),
+                                              color: Constans.icem,
                                             ),
                                           ),
                                         ],
@@ -909,13 +910,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   'View Details',
                                                   style: TextStyle(
                                                     fontSize: 16,
-                                                    color: 'FDC886'.toColor(),
+                                                    color: Constans.icem,
                                                   ),
                                                 ),
                                                 SizedBox(width: 5),
                                                 Icon(
                                                   Icons.arrow_forward_ios,
-                                                  color: 'FDC886'.toColor(),
+                                                  color: Constans.icem,
                                                   size: 12,
                                                 ),
                                               ],
@@ -942,7 +943,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   offset: Offset(0, 5),
                                 ),
                               ],
-                              color: Colors.white,
+                              color: Constans.utih,
                               borderRadius: BorderRadius.circular(24),
                             ),
                             padding: EdgeInsets.all(24),
@@ -955,7 +956,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   width: 80,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: 'FDC886'.toColor().withOpacity(0.2),
+                                    color: Constans.oyen.withOpacity(0.2),
                                   ),
                                   child: Image.asset('assets/experience.png',
                                       height: 35.42, width: 41.67),
@@ -965,14 +966,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
-                                    color: '232631'.toColor(),
+                                    color: Constans.icem,
                                   ),
                                 ),
                                 Text(
                                   'Experience',
                                   style: TextStyle(
                                     fontSize: 18,
-                                    color: '232631'.toColor(),
+                                    color: Constans.icem,
                                   ),
                                 ),
                               ],
@@ -988,14 +989,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         Text(
                           'Top 4 Expert Chefs',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                              fontWeight: FontWeight.bold, fontSize: 18, color: Constans.unyu,),
                         ),
                         Text(
                           'Expert Chefs in Fuddy',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 32,
-                            color: '232631'.toColor(),
+                            color: Constans.icem,
                           ),
                         ),
                         SizedBox(height: 32),
@@ -1010,7 +1011,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ],
                             borderRadius: BorderRadius.circular(24),
-                            color: Colors.white,
+                            color: Constans.utih,
                           ),
                           width: MediaQuery.of(context).size.width - 850,
                           child: Column(
@@ -1019,7 +1020,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               Text(
                                 'PIZZA',
                                 style: TextStyle(
-                                    fontSize: 16, color: '656565'.toColor()),
+                                  fontSize: 16,
+                                  color: Constans.acuacu,
+                                ),
                               ),
                               Row(
                                 mainAxisAlignment:
@@ -1029,7 +1032,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     'Phoenix Satcheup',
                                     style: TextStyle(
                                       fontSize: 16,
-                                      color: '656565'.toColor(),
+                                      color: Constans.acuacu,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -1042,7 +1045,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           onPressed: () {},
                                           icon: Icon(
                                             Icons.arrow_forward_ios,
-                                            color: 'FDC886'.toColor(),
+                                            color: Constans.oyen,
                                             size: 12,
                                           ),
                                         ),
@@ -1063,13 +1066,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   'Profile Details',
                                                   style: TextStyle(
                                                     fontSize: 16,
-                                                    color: 'FDC886'.toColor(),
+                                                    color: Constans.oyen,
                                                   ),
                                                 ),
                                                 SizedBox(width: 5),
                                                 Icon(
                                                   Icons.arrow_forward_ios,
-                                                  color: 'FDC886'.toColor(),
+                                                  color: Constans.oyen,
                                                   size: 12,
                                                 ),
                                               ],
@@ -1085,15 +1088,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: [
                                   Icon(
                                     Icons.location_on_sharp,
-                                    color: '656565'.toColor(),
+                                    color: Constans.acuacu,
                                     size: 15,
                                   ),
                                   SizedBox(width: 5),
                                   Text(
                                     'Jakarta, Indonesia',
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        color: '656565'.toColor()),
+                                      fontSize: 16,
+                                      color: Constans.acuacu,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -1112,7 +1116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ],
                             borderRadius: BorderRadius.circular(24),
-                            color: Colors.white,
+                            color: Constans.utih,
                           ),
                           width: MediaQuery.of(context).size.width - 850,
                           child: Column(
@@ -1121,13 +1125,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               Text(
                                 'VEGAN',
                                 style: TextStyle(
-                                    fontSize: 16, color: '656565'.toColor()),
+                                  fontSize: 16,
+                                  color: Constans.acuacu,
+                                ),
                               ),
                               Text(
                                 'Chamber Botfrag',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: '656565'.toColor(),
+                                  color: Constans.acuacu,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -1135,15 +1141,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: [
                                   Icon(
                                     Icons.location_on_sharp,
-                                    color: '656565'.toColor(),
+                                    color: Constans.acuacu,
                                     size: 15,
                                   ),
                                   SizedBox(width: 5),
                                   Text(
                                     'Bandung, Indonesia',
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        color: '656565'.toColor()),
+                                      fontSize: 16,
+                                      color: Constans.acuacu,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -1162,7 +1169,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ],
                             borderRadius: BorderRadius.circular(24),
-                            color: Colors.white,
+                            color: Constans.utih,
                           ),
                           width: MediaQuery.of(context).size.width - 850,
                           child: Column(
@@ -1171,13 +1178,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               Text(
                                 'ROAST CHICKEN',
                                 style: TextStyle(
-                                    fontSize: 16, color: '656565'.toColor()),
+                                  fontSize: 16,
+                                  color: Constans.acuacu,
+                                ),
                               ),
                               Text(
                                 'Asep Vandal',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: '656565'.toColor(),
+                                  color: Constans.acuacu,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -1185,15 +1194,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: [
                                   Icon(
                                     Icons.location_on_sharp,
-                                    color: '656565'.toColor(),
+                                    color: Constans.acuacu,
                                     size: 15,
                                   ),
                                   SizedBox(width: 5),
                                   Text(
                                     'Sunda, Indonesia',
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        color: '656565'.toColor()),
+                                      fontSize: 16,
+                                      color: Constans.acuacu,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -1212,7 +1222,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ],
                             borderRadius: BorderRadius.circular(24),
-                            color: Colors.white,
+                            color: Constans.utih,
                           ),
                           width: MediaQuery.of(context).size.width - 850,
                           child: Column(
@@ -1221,13 +1231,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               Text(
                                 'BEEF STEAK',
                                 style: TextStyle(
-                                    fontSize: 16, color: '656565'.toColor()),
+                                  fontSize: 16,
+                                  color: Constans.acuacu,
+                                ),
                               ),
                               Text(
                                 'I Made Invoker ',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: '656565'.toColor(),
+                                  color: Constans.acuacu,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -1235,15 +1247,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: [
                                   Icon(
                                     Icons.location_on_sharp,
-                                    color: '656565'.toColor(),
+                                    color: Constans.acuacu,
                                     size: 15,
                                   ),
                                   SizedBox(width: 5),
                                   Text(
                                     'Bali, Indonesia',
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        color: '656565'.toColor()),
+                                      fontSize: 16,
+                                      color: Constans.acuacu,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -1278,7 +1291,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           children: [
             Container(
-              color: 'FAFAFA'.toColor(),
+              color: Constans.utih,
               width: 90,
               height: 375,
             ),
@@ -1301,7 +1314,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
               borderRadius: BorderRadius.circular(24),
-              color: Colors.white,
+              color: Constans.utih,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1330,7 +1343,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       animationDuration: Duration(milliseconds: 1000),
                       valueLabelPadding: EdgeInsets.zero,
                       valueLabelMargin: EdgeInsets.zero,
-                      starOffColor: Color(0xffe7e8ea),
+                      starOffColor: Constans.acuacu.withOpacity(0.2),
                       starColor: 'FFB800'.toColor(),
                     ),
                     SizedBox(width: 4),
@@ -1338,7 +1351,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       value.toStringAsFixed(1),
                       style: TextStyle(
                         fontSize: 18,
-                        color: 'FFB800'.toColor(),
+                        color: Constans.oyen,
                       ),
                     ),
                     SizedBox(width: 4),
@@ -1346,7 +1359,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       '(5.2K+)',
                       style: TextStyle(
                         fontSize: 18,
-                        color: '656565'.toColor(),
+                        color: Constans.acuacu,
                       ),
                     ),
                   ],
@@ -1355,7 +1368,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   title,
                   style: TextStyle(
                     fontSize: 22,
-                    color: '232631'.toColor(),
+                    color: Constans.icem,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -1363,7 +1376,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   priceRange,
                   style: TextStyle(
                     fontSize: 18,
-                    color: '656565'.toColor(),
+                    color: Constans.acuacu,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -1371,7 +1384,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Icon(
                       Icons.location_on_sharp,
-                      color: '656565'.toColor(),
+                      color: Constans.acuacu,
                       size: 18,
                     ),
                     SizedBox(width: 4),
@@ -1379,7 +1392,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       location,
                       style: TextStyle(
                         fontSize: 16,
-                        color: '656565'.toColor(),
+                        color: Constans.acuacu,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -1389,7 +1402,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ViewAllButton(
                   text: 'Make Reservation',
                   icon: Icons.arrow_forward_ios,
-                  backgroundColor: 'FDC886'.toColor(),
+                  backgroundColor: Constans.icem,
                   textColor: '232631'.toColor(),
                   onPressed: () {},
                 ),
@@ -1398,14 +1411,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Image.asset(
                       'assets/info.png',
-                      scale: 2,
+                      scale: 3,
                     ),
                     SizedBox(width: 6),
                     Text(
                       'No extra cost',
                       style: TextStyle(
                         fontSize: 16,
-                        color: '656565'.toColor(),
+                        color: Constans.acuacu,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

@@ -46,3 +46,11 @@ List<Fitur> fitur = [
     subtitle: 'We ensure the cleanliness of the\nplace as well as the food',
   ),
 ];
+
+class Constans {
+  static final Color oyen = 'FDC886'.toColor();
+  static final Color unyu = '5A4FCF'.toColor();
+  static final Color icem = '232631'.toColor();
+  static final Color acuacu = '656565'.toColor();
+  static final Color utih = 'FFFFFF'.toColor();
+}

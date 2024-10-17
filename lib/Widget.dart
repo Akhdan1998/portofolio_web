@@ -3,6 +3,7 @@ import 'package:delightful_toast/toast/components/toast_card.dart';
 import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter/material.dart';
+import 'package:portofolio_web/utils.dart';
 import 'package:supercharged/supercharged.dart';
 
 //Service Kategori
@@ -24,7 +25,7 @@ class ButtonFitur extends StatefulWidget {
 }
 
 class _ButtonFiturState extends State<ButtonFitur> {
-  Color _buttonColor = Colors.white;
+  Color _buttonColor = Constans.utih;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class _ButtonFiturState extends State<ButtonFitur> {
           bottomRight: Radius.circular(48),
           bottomLeft: Radius.circular(48),
         ),
-        color: Colors.white,
+        color: Constans.utih,
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
@@ -55,7 +56,7 @@ class _ButtonFiturState extends State<ButtonFitur> {
             width: 80,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: 'FDC886'.toColor().withOpacity(0.2),
+              color: Constans.oyen.withOpacity(0.2),
             ),
             child: Image.asset(widget.icon, height: 48, width: 48),
           ),
@@ -84,12 +85,12 @@ class _ButtonFiturState extends State<ButtonFitur> {
             cursor: SystemMouseCursors.click,
             onEnter: (event) {
               setState(() {
-                _buttonColor = 'FDC886'.toColor();
+                _buttonColor = Constans.oyen;
               });
             },
             onExit: (event) {
               setState(() {
-                _buttonColor = Colors.white;
+                _buttonColor = Constans.utih;
               });
             },
             child: Bounce(
@@ -144,7 +145,7 @@ void showToast(
     position: DelightSnackbarPosition.top,
     builder: (context) {
       return ToastCard(
-        color: Colors.white,
+        color: Constans.utih,
         leading: Icon(
           icon,
           size: 28,
@@ -172,7 +173,7 @@ class HeaderWidget extends StatelessWidget {
         Text(
           'Top 3 Featured Restaurant',
           style: TextStyle(
-            color: Color(0xFF5A4FCF),
+            color: Constans.unyu,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
@@ -181,15 +182,16 @@ class HeaderWidget extends StatelessWidget {
         Text(
           'Most Popular Restaurants',
           style: TextStyle(
-            color: Color(0xFF232631),
+            color: Constans.icem,
             fontSize: 28,
+            fontWeight: FontWeight.bold,
           ),
         ),
         SizedBox(height: 20),
         Text(
           'The best restaurant in our opinion is how\nmuch customers like it in terms of place,\nprice, comfort, and of course, the taste of\nthe food itself.',
           style: TextStyle(
-            color: Color(0xFF656565),
+            color: Constans.acuacu,
             fontSize: 16,
           ),
         ),
@@ -200,15 +202,14 @@ class HeaderWidget extends StatelessWidget {
 
 //button
 class ViewAllButton extends StatelessWidget {
-  final String text; // Untuk teks tombol
-  final VoidCallback onPressed; // Untuk aksi ketika tombol ditekan
-  final Color backgroundColor; // Warna background tombol
-  final Color textColor; // Warna teks
-  final EdgeInsets padding; // Padding tombol
+  final String text;
+  final VoidCallback onPressed;
+  final Color backgroundColor;
+  final Color textColor;
+  final EdgeInsets padding;
   final IconData? icon;
   final Color? iconColor;
 
-  // Constructor dengan nilai default
   ViewAllButton({
     required this.text,
     required this.onPressed,
@@ -246,10 +247,9 @@ class ViewAllButton extends StatelessWidget {
             if (icon != null) ...[
               SizedBox(width: 8),
               Icon(
-                icon, // Ikon hanya muncul jika tidak null
+                icon,
                 size: 16,
-                color: iconColor ??
-                    textColor, // Warna ikon default sama dengan teks jika tidak diberikan
+                color: iconColor ?? textColor,
               ),
             ],
           ],
@@ -322,7 +322,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
                 child: Container(
                   padding: EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Constans.utih,
                     borderRadius: BorderRadius.circular(24),
                   ),
                   child: Column(
@@ -330,12 +330,12 @@ class _RestaurantCardState extends State<RestaurantCard> {
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.star, color: 'FFB800'.toColor()),
+                          Icon(Icons.star, color: Constans.oyen),
                           SizedBox(width: 4),
                           Text(
                             widget.bintang,
                             style: TextStyle(
-                              color: 'FFB800'.toColor(),
+                              color: Constans.oyen,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
@@ -343,7 +343,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
                           SizedBox(width: 4),
                           Text(
                             widget.view,
-                            style: TextStyle(color: Color(0xFF656565)),
+                            style: TextStyle(color: Constans.acuacu),
                           ),
                         ],
                       ),
@@ -356,13 +356,13 @@ class _RestaurantCardState extends State<RestaurantCard> {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF232631),
+                              color: Constans.icem,
                             ),
                           ),
                           Container(
                             padding: EdgeInsets.all(6),
                             decoration: BoxDecoration(
-                              color: Color(0xFFFDC886),
+                              color: Constans.oyen,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Icon(Icons.arrow_forward, size: 24),
@@ -372,13 +372,15 @@ class _RestaurantCardState extends State<RestaurantCard> {
                       SizedBox(height: 8),
                       Row(
                         children: [
-                          Icon(Icons.location_on_sharp,
-                              color: Color(0xFF656565)),
+                          Icon(
+                            Icons.location_on_sharp,
+                            color: Constans.oyen,
+                          ),
                           SizedBox(width: 4),
                           Text(
                             widget.kota,
                             style: TextStyle(
-                              color: Color(0xFF656565),
+                              color: Constans.acuacu,
                               fontSize: 16,
                             ),
                           ),
@@ -459,7 +461,7 @@ class _HoverableRestaurantCardState extends State<HoverableRestaurantCard> {
               child: Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Constans.utih,
                   borderRadius: BorderRadius.circular(24),
                 ),
                 child: Column(
@@ -468,12 +470,12 @@ class _HoverableRestaurantCardState extends State<HoverableRestaurantCard> {
                     // Rating dan reviews
                     Row(
                       children: [
-                        Icon(Icons.star, color: 'FFB800'.toColor()),
+                        Icon(Icons.star, color: Constans.oyen),
                         SizedBox(width: 4),
                         Text(
                           widget.restaurant['rating'],
                           style: TextStyle(
-                            color: 'FFB800'.toColor(),
+                            color: Constans.oyen,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -481,7 +483,7 @@ class _HoverableRestaurantCardState extends State<HoverableRestaurantCard> {
                         SizedBox(width: 4),
                         Text(
                           widget.restaurant['reviews'],
-                          style: TextStyle(color: Color(0xFF656565)),
+                          style: TextStyle(color: Constans.acuacu),
                         ),
                       ],
                     ),
@@ -495,7 +497,7 @@ class _HoverableRestaurantCardState extends State<HoverableRestaurantCard> {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF232631),
+                              color: Constans.icem,
                             ),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -503,7 +505,7 @@ class _HoverableRestaurantCardState extends State<HoverableRestaurantCard> {
                         Container(
                           padding: EdgeInsets.all(6),
                           decoration: BoxDecoration(
-                            color: Color(0xFFFDC886),
+                            color: Constans.oyen,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Icon(Icons.arrow_forward, size: 24),
@@ -514,12 +516,15 @@ class _HoverableRestaurantCardState extends State<HoverableRestaurantCard> {
                     // Harga
                     Row(
                       children: [
-                        Icon(Icons.location_on_sharp, color: Color(0xFF656565)),
+                        Icon(
+                          Icons.location_on_sharp,
+                          color: Constans.acuacu,
+                        ),
                         SizedBox(width: 4),
                         Text(
                           widget.restaurant['price'],
                           style: TextStyle(
-                            color: Color(0xFF656565),
+                            color: Constans.acuacu,
                             fontSize: 16,
                           ),
                         ),
